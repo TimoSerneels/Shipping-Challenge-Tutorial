@@ -1,0 +1,17 @@
+//Custom code
+main {
+    min-height: 500px;
+}
+
+.cardShopMaster {
+    cursor: pointer;
+}
+
+.cardflex {
+    display: flex;
+    align-items: stretch;
+}
+
+.card {
+    flex: 0 1 auto;
+}
