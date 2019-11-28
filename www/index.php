@@ -1,60 +1,42 @@
-<?php
+<html>
+ <head>
+  <title>Hello and welcome</title>
 
-/**
- * Laravel - A PHP Framework For Web Artisans
- *
- * @package  Laravel
- * @author   Taylor Otwell <taylor@laravel.com>
- */
+  <meta charset="utf-8">
+  <meta name="author" content="RVolders">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-define('LARAVEL_START', microtime(true));
+</head>
+<body>
+    <div class="container">
+    <?php echo "<h1>Welcome to my database :</h1>"; ?>
+    <?php
 
-/*
-|--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader for
-| our application. We just need to utilize it! We'll simply require it
-| into the script here so that we don't have to worry about manual
-| loading any of our classes later on. It feels great to relax.
-|
-*/
+    // Connexion et sélection de la base
+    $conn = mysqli_connect('db', 'user', 'R1234-56', "myDb");
 
-require __DIR__.'/../vendor/autoload.php';
+    $query = 'SELECT * From Person';
+    $result = mysqli_query($conn, $query);
 
-/*
-|--------------------------------------------------------------------------
-| Turn On The Lights
-|--------------------------------------------------------------------------
-|
-| We need to illuminate PHP development, so let us turn on the lights.
-| This bootstraps the framework and gets it ready for use, then it
-| will load up this application so that we can run it and send
-| the responses back to the browser and delight our users.
-|
-*/
+    echo '<table class="table table-striped">';
+    echo '<thead><tr><th></th><th>id</th><th>name</th></tr></thead>';
+    while($value = $result->fetch_array(MYSQLI_ASSOC)){
+        echo '<tr>';
+        echo '<td><span class="glyphicon glyphicon-search"></span></td>';
+        foreach($value as $element){
+            echo '<td>' . $element . '</td>';
+        }
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+        echo '</tr>';
+    }
+    echo '</table>';
+    $result->close();
 
-/*
-|--------------------------------------------------------------------------
-| Run The Application
-|--------------------------------------------------------------------------
-|
-| Once we have the application, we can handle the incoming request
-| through the kernel, and send the associated response back to
-| the client's browser allowing them to enjoy the creative
-| and wonderful application we have prepared for them.
-|
-*/
+    mysqli_close($conn);
 
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
-
-$response->send();
-
-$kernel->terminate($request, $response);
+    ?>
+	</div>
+</body>
+</html>
