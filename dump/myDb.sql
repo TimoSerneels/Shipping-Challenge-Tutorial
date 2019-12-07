@@ -7,7 +7,6 @@ SET time_zone = "+00:00";
  /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
  /*!40101 SET NAMES utf8mb4 */;
 
--- voer hier tussen u persoonlijke sql scripts
 
 CREATE TABLE `Person` (
    `id` int(11) NOT NULL,
@@ -20,8 +19,6 @@ CREATE TABLE `Person` (
  (3, 3, 'Sander'),
  (4, 2, 'Stijn'),
  (5, 1, 'Brent');
- 
--- voer hier tussen u persoonlijke sql scripts
 
  /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
  /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
