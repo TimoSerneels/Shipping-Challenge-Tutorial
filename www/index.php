@@ -14,7 +14,7 @@
     <?php echo "<h1>Welcome to my database :</h1>"; ?>
     <?php
 
-    // Connexion et sélection de la base
+    
     $conn = mysqli_connect('db', 'user', 'R1234-56', "myDb");
 
     $query = 'SELECT * From Person';
